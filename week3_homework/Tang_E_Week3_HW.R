@@ -46,6 +46,17 @@ plot(starbucks_cleaned$Carb, starbucks_cleaned$Calories, xlab = "Carbs per drink
 
 
 #exercise 1.4
+batting <- read.csv("batting.csv")
+#players scoring 3 or more home runs
+nrow(batting[batting$HR >= 3,])
+plot(batting$yearID, batting$HR, xlab = "Year", ylab = "Number of home runs")
+
+LA_Angels <- batting[batting$teamID == "LAA",]
+plot(LA_Angels$yearID, LA_Angels$HR, xlab = "Year", ylab = "Number of home runs")
+ATL_PIT <- batting[batting$teamID == "ATL" | batting$teamID == "PIT",]
+plot(ATL_PIT$yearID, ATL_PIT$HR, xlab = "Year", ylab = "Number of home runs", col = ifelse(ATL_PIT$teamID == "ATL", "red", "black"))
+
+#exercise 1.5
 easy_plot <- function(x, y, color_data){
   med = median(color_data)
   levels = character(92)
